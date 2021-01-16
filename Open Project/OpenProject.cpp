@@ -61,7 +61,8 @@ int main()
 		cout << "\n";
 		cout << "Credits:";
 		cout << "\n";
-		cout << "Null, WeakRecords. Thanks for useful tutorials :)";
+		cout << "Null, WeakRecords. Thanks for useful tutorials :)\n";
+		cout << "Log:\n";
 
 		//Funkcje
 		thread fovChanger(Fov);
@@ -71,26 +72,32 @@ int main()
 		while (true)
 		{
 			Sleep(50);
-			//if (GetAsyncKeyState(VK_F8))
-			//{
-				//toggleFov = !toggleFov;
+			if (GetAsyncKeyState(VK_F8))
+			{
+				toggleFov = !toggleFov;
 
-				//if (toggleFov)
-					//Sleep(1);
-			//}
-			//if (GetAsyncKeyState(VK_F2))
-			//{
-				//toggleBhop = !toggleBhop;
+				if (toggleFov)
+					cout << "FovChanger: On\n";
+				    Beep(600, 500);
+			}
+			if (GetAsyncKeyState(VK_F2))
+			{
+				toggleBhop = !toggleBhop;
 
-				//if (toggleBhop)
-					//Sleep(1);
-			//}
+				if (toggleBhop)
+					cout << "Bunnyhop: On\n";
+				    Beep(600, 500);
+			}
 			if (GetAsyncKeyState(VK_F3))
 			{
 				toggleNoFlash = !toggleNoFlash;
 
 				if (toggleNoFlash)
-					Sleep(1);
+				{
+					cout << "Noflash: On\n";
+					Beep(600, 500);
+				}
+				
 			}
 		}
 
