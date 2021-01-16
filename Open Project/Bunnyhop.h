@@ -12,15 +12,16 @@ void Bunnyhop() {
 			if (toggleBhop)
 			{
 				DWORD LocalPlayer = readMem<DWORD>(clientBase + dwLocalPlayer);
-				BYTE LocalPlayerFlag = readMem<BYTE>(dwLocalPlayer + m_fFlags);
-				if (GetAsyncKeyState(VK_SPACE) && LocalPlayerFlag == 257)
+				DWORD LocalPlayerFlag = readMem<DWORD>(LocalPlayer + m_fFlags);
+				if (GetAsyncKeyState(VK_SPACE) && LocalPlayerFlag == FL_ONGROUND)
 				{
+					cout << "On ground!";
 					writeMem<DWORD>(LocalPlayer + dwForceJump, 5);
 				}
 			}
-			else
+			else if (GetAsyncKeyState(VK_F2) && toggleBhop)
 			{
-				Sleep(1);
+				break;
 			}
 		}
 		
