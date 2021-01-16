@@ -8,18 +8,20 @@ void Fov() {
 
 	while (true)
 	{
+
 		Sleep(1);
 		if (toggleFov)
 		{
 			DWORD LocalPlayer = readMem<DWORD>(clientBase + dwLocalPlayer);
-			int newFov = 100;
-			writeMem<int>(LocalPlayer + m_iFOV, newFov);
+			int Fov = 120;
+			writeMem<int>(LocalPlayer + m_iFOV, Fov);
 		}
-		else
+		else if (GetAsyncKeyState(VK_F8) && toggleFov)
 		{
-			int newFov = 0;
 			DWORD LocalPlayer = readMem<DWORD>(clientBase + dwLocalPlayer);
-			writeMem<int>(LocalPlayer + m_iFOV, newFov);
+			DWORD CurrentFov = readMem<DWORD>(LocalPlayer + m_iFOV);
+
+			writeMem<DWORD>(CurrentFov, 0);
 		}
 	}
 }
