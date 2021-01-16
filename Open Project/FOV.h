@@ -5,25 +5,29 @@
 #include "Important.h"
 
 void Fov() {
-
+	int newFov;
+	cout << "Enter fov (0 - 300): ";
+	cin >> newFov;
 	while (true)
 	{
-
-		Sleep(1);
 		if (toggleFov)
 		{
 			DWORD LocalPlayer = readMem<DWORD>(clientBase + dwLocalPlayer);
-			int Fov = 120;
-			writeMem<int>(LocalPlayer + m_iFOV, Fov);
-		}
-		else if (GetAsyncKeyState(VK_F8) && toggleFov)
-		{
-			DWORD LocalPlayer = readMem<DWORD>(clientBase + dwLocalPlayer);
-			DWORD CurrentFov = readMem<DWORD>(LocalPlayer + m_iFOV);
 
-			writeMem<DWORD>(CurrentFov, 0);
+			writeMem<int>(LocalPlayer + m_iFOV, newFov);
+			cout << "Fov: ";
+			cout << newFov;
+			cout << "" << endl;
+		}
+		else
+		{
+			int newFov = 0;
+
+			DWORD LocalPlayer = readMem<DWORD>(clientBase + dwLocalPlayer);
+
+			writeMem<int>(LocalPlayer + m_iFOV, newFov);
 		}
 	}
+	Sleep(1);
 }
-
 #endif // __FOV_h__
