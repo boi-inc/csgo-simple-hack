@@ -7,5 +7,8 @@
 #include <thread>
 #include <stdio.h>
 #include <stdlib.h>
+#include <fstream>
+
+using namespace std;
 
 #endif // __Important_h__
