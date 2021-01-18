@@ -20,8 +20,7 @@ bool toggleGlow = false;
 bool toggleTrigger = false;
 bool toggleBhop = false;
 bool toggleNoFlash = false;
-bool plusFov = false;
-bool minusFov = false;
+bool toggleAimbot = false;
 
 //Offsety
 const DWORD cs_gamerules_data = 0x0;
