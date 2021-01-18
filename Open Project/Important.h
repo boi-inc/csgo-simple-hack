@@ -10,5 +10,9 @@
 #include <fstream>
 
 using namespace std;
+using std::cout;
+using std::cin;
+using std::endl;
+
 
 #endif // __Important_h__
