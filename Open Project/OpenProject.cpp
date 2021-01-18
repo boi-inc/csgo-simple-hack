@@ -48,20 +48,33 @@ int main()
 		cout << "\n";
 		cout << "Addresses:" << endl;
 		cout << " CS:GO - ";
+		setcolor(10);
 		cout << hwnd << endl;
+		setcolor(15);
 		cout << " Client.dll - ";
+		setcolor(10);
 		cout << clientBase << endl;
+		setcolor(15);
 		cout << " Engine.dll - ";
+		setcolor(10);
 		cout << engineBase;
+		setcolor(15);
 		cout << "\n";
 		cout << "\n";
 		cout << "Features:" << endl;
+		cout << "Bunnyhop: F2" << endl;
 		cout << "NoFlash: F3" << endl;
+		cout << "Fov Changer: F8" << endl;
 		cout << "\n";
 		cout << "\n";
-		cout << "Credits:";
-		cout << "\n";
-		cout << "Null, WeakRecords. Thanks for useful tutorials :)\n";
+		setcolor(10);
+		cout << "Special thanks:\n";
+		setcolor(5);
+		cout << "Tomson_" << endl;
+		cout << "Vondri" << endl;
+		cout << "floyare" << endl;
+		cout << "wiotq" << endl << endl;
+		setcolor(15);
 		cout << "Log:\n";
 
 		//Funkcje
