@@ -4,30 +4,34 @@
 #include "Features.h"
 #include "Important.h"
 
+
+void Config() {
+	ofstream FovConfig("Fov.txt");
+	FovConfig.close();
+}
+
 void Fov() {
-	int newFov;
-	cout << "Enter fov (0 - 300): ";
-	cin >> newFov;
-	while (true)
-	{
-		if (toggleFov)
+
+	DWORD LocalPlayer = readMem<DWORD>(clientBase + dwLocalPlayer);
+
+		int newFov, defaultFov; 
+  		defaultFov = readMem<int>(LocalPlayer + m_iFOV);
+		cout << "Enter fov (0 - 300): ";
+	    cin >> newFov;
+
+		while (true)
 		{
-			DWORD LocalPlayer = readMem<DWORD>(clientBase + dwLocalPlayer);
+			if (toggleFov)
+			{
 
-			writeMem<int>(LocalPlayer + m_iFOV, newFov);
-			cout << "Fov: ";
-			cout << newFov;
-			cout << "" << endl;
+				writeMem<int>(LocalPlayer + m_iFOV, newFov);
+				
+
+			}
+			else
+			{
+                writeMem<int>(LocalPlayer + m_iFOV, defaultFov); 
+			}
 		}
-		else
-		{
-			int newFov = 0;
-
-			DWORD LocalPlayer = readMem<DWORD>(clientBase + dwLocalPlayer);
-
-			writeMem<int>(LocalPlayer + m_iFOV, newFov);
-		}
-	}
-	Sleep(1);
 }
 #endif // __FOV_h__
