@@ -1,6 +1,6 @@
 # External CS:GO Hack by dekoyyy
 
-![Preview](/image.png)
+![Preview](/console.png)
 
 ## How to use:
 1. Compile source
@@ -10,12 +10,14 @@
 
 ## Features:
 * NoFlash
+* Fov Changer
+* Bunnyhop
 
-### Credits:
-* Null
-* **WeakRecords**
-
-_Thanks guys for useful tutarials_
+### Special thanks:
+* **Tomson_**
+* **Vondri**
+* **floyare**
+* **wiotq**
 
 ### Memory read & write:
 ```c++
@@ -38,8 +40,8 @@ void writeMem(DWORD address, T value)
 ## To do:
 - [x] Add toggle option
 - [x] Add No Flash
-- [ ] Add FovChanger with user input
+- [x] Add FovChanger with user input
 - [ ] Add Triggerbot
 - [ ] Add Glow
-- [ ] Add Bunnyhop
+- [x] Add Bunnyhop
 - [ ] Add sth like a config 😁
