@@ -4,6 +4,7 @@
 #include "Features.h"
 #include "Important.h"
 
+
 #define FL_ONGROUND (1<<0)
 
 void Bunnyhop() {
@@ -13,10 +14,10 @@ void Bunnyhop() {
 			{
 				DWORD LocalPlayer = readMem<DWORD>(clientBase + dwLocalPlayer);
 				DWORD LocalPlayerFlag = readMem<DWORD>(LocalPlayer + m_fFlags);
-				if (GetAsyncKeyState(VK_SPACE) && LocalPlayerFlag == FL_ONGROUND)
-				{
-					cout << "On ground!";
-					writeMem<DWORD>(LocalPlayer + dwForceJump, 5);
+				if (GetAsyncKeyState(VK_SPACE) && LocalPlayerFlag == 257) {
+					writeMem<DWORD>(clientBase + dwForceJump, 6);
+					Sleep(40);
+					writeMem<DWORD>(clientBase + dwForceJump, 0);
 				}
 			}
 			else if (GetAsyncKeyState(VK_F2) && toggleBhop)
