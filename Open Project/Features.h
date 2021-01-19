@@ -4,6 +4,12 @@
 #include "Important.h"
 #include "Offsets.h"
 
+struct Base {
+    HANDLE process; // Proces gry
+    DWORD clientBase; // Adres client.dll
+    DWORD engineBase; // Adres engine.dll
+}Base;
+
 DWORD getModuleBaseAddress(DWORD pid, const char* name)
 {
     HANDLE snapshot = CreateToolhelp32Snapshot(TH32CS_SNAPMODULE, pid);
@@ -18,12 +24,12 @@ DWORD getModuleBaseAddress(DWORD pid, const char* name)
         }
     } while (Module32Next(snapshot, &mEntry));
 }
-
+// Memory read
 template <typename T>
 T readMem(DWORD address)
 {
     T buffer;
-    ReadProcessMemory(process, (LPVOID)address, &buffer, sizeof(buffer), 0);
+    ReadProcessMemory(Base.process, (LPVOID)address, &buffer, sizeof(buffer), 0);
     return buffer;
 }
 
@@ -31,7 +37,7 @@ T readMem(DWORD address)
 template <typename T>
 void writeMem(DWORD address, T value)
 {
-    WriteProcessMemory(process, (LPVOID)address, &value, sizeof(value), 0);
+    WriteProcessMemory(Base.process, (LPVOID)address, &value, sizeof(value), 0);
 }
 
 #endif // __Features_h__
