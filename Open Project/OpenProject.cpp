@@ -22,18 +22,18 @@ int main()
 
 	GetWindowThreadProcessId(hwnd, &pID);
 
-	process = OpenProcess(PROCESS_ALL_ACCESS, FALSE, pID);
+	Base.process = OpenProcess(PROCESS_ALL_ACCESS, FALSE, pID);
 
 	//client.dll
 	do {
-		clientBase = getModuleBaseAddress(pID, "client.dll");
+		Base.clientBase = getModuleBaseAddress(pID, "client.dll");
 		Sleep(100);
-	} while (!clientBase);
+	} while (!Base.clientBase);
 
 	//engine.dll
 	do {
-		engineBase = getModuleBaseAddress(pID, "engine.dll");
-	} while (!engineBase);
+		Base.engineBase = getModuleBaseAddress(pID, "engine.dll");
+	} while (!Base.engineBase);
 	if (hwnd && pID)
 	{
 		Sleep(1000);
@@ -53,11 +53,11 @@ int main()
 		setcolor(15);
 		cout << " Client.dll - ";
 		setcolor(10);
-		cout << clientBase << endl;
+		cout << Base.clientBase << endl;
 		setcolor(15);
 		cout << " Engine.dll - ";
 		setcolor(10);
-		cout << engineBase;
+		cout << Base.engineBase;
 		setcolor(15);
 		cout << "\n";
 		cout << "\n";
