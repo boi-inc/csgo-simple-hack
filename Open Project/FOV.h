@@ -5,17 +5,11 @@
 #include "Important.h"
 
 
-void Config() {
-	ofstream FovConfig("Fov.txt");
-	FovConfig.close();
-}
 
 void Fov() {
 
-	DWORD LocalPlayer = readMem<DWORD>(clientBase + dwLocalPlayer);
-
 		int newFov, defaultFov; 
-  		defaultFov = readMem<int>(LocalPlayer + m_iFOV);
+  		defaultFov = readMem<int>(Entity.LocalPlayer + Offsets.m_iFOV);
 		cout << "Enter fov (0 - 300): ";
 	    cin >> newFov;
 
@@ -24,13 +18,13 @@ void Fov() {
 			if (toggleFov)
 			{
 
-				writeMem<int>(LocalPlayer + m_iFOV, newFov);
+				writeMem<int>(Entity.LocalPlayer + Offsets.m_iFOV, newFov);
 				
 
 			}
 			else
 			{
-                writeMem<int>(LocalPlayer + m_iFOV, defaultFov); 
+                writeMem<int>(Entity.LocalPlayer + Offsets.m_iFOV, defaultFov);
 			}
 		}
 }
